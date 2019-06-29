@@ -8,7 +8,8 @@ NeoVim can be installed using apt-get on Ubuntu so don't worry about the install
 ## Environment
 
 * Ubuntu 18.04 
-Note: Headless (server) version is supported, as normally expected with vim.
+
+ Note: Headless (server) version is supported, as normally expected with vim.
 
 ## Installation
 
@@ -29,26 +30,27 @@ cp .config/nvim/init.vim ~/.config/nvim/
 ```
 sudo apt install nvim
 ```
-This installs version 0.2.2 at the time of writing this.
+ This installs version 0.2.2 at the time of writing this.
 
 * Set your vim command to neovim:
 ```
 update-alternatives --config vim
 ```
-The command will list all flavours of vim installed and prompt you to select one by typing a corresponding digit. Do that.
+ The command will list all flavours of vim installed and prompt you to select one by typing a corresponding digit. Do that.
 
 * Install plugin dependencies:
 
-For YouCompleteMe:
+ For YouCompleteMe:
 ```
 sudo apt install build-essential cmake python3-dev
 ```
-For chromatica
+ For chromatica
 ```
 sudo apt install libclang-dev
 sudo apt install python3-pip
 sudo pip3 install --upgrade pynvim
 ```
+
 * Open vim and download plugins (most are installed by downloading):
 ```
 vim
