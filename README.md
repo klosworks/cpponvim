@@ -1,4 +1,4 @@
-# my_dot_files
+# cpponvim
 
 This is an attempt at providing a working, versioned, well documented configuration for programming in C++ on Ubuntu using NeoVim.
 
