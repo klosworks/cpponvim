@@ -9,59 +9,59 @@ NeoVim can be installed using apt-get on Ubuntu so don't worry about the install
 
 * Ubuntu 18.04 
 
- Note: Headless (server) version is supported, as normally expected with vim.
+  Note: Headless (server) version is supported, as normally expected with vim.
 
 ## Installation
 
 * install c++ tools
-```
-sudo install build-essential gdb 
-```
+  ```
+  sudo install build-essential gdb 
+  ```
 
 * copy the init.vim file to your filesystem:
-```
-mkdir ~/.config
-mkdir ~/.config/nvim
-mkdir ~/.config/nvim/init.vim
-cp .config/nvim/init.vim ~/.config/nvim/
-```
+  ```
+  mkdir ~/.config
+  mkdir ~/.config/nvim
+  mkdir ~/.config/nvim/init.vim
+  cp .config/nvim/init.vim ~/.config/nvim/
+  ```
 
 * Install nvim:
-```
-sudo apt install nvim
-```
- This installs version 0.2.2 at the time of writing this.
+  ```
+  sudo apt install nvim
+  ```
+  This installs version 0.2.2 at the time of writing this.
 
 * Set your vim command to neovim:
-```
-update-alternatives --config vim
-```
- The command will list all flavours of vim installed and prompt you to select one by typing a corresponding digit. Do that.
+  ```
+  update-alternatives --config vim
+  ```
+  The command will list all flavours of vim installed and prompt you to select one by typing a corresponding digit. Do that.
 
 * Install plugin dependencies:
 
- For YouCompleteMe:
-```
-sudo apt install build-essential cmake python3-dev
-```
- For chromatica
-```
-sudo apt install libclang-dev
-sudo apt install python3-pip
-sudo pip3 install --upgrade pynvim
-```
+  For YouCompleteMe:
+  ```
+  sudo apt install build-essential cmake python3-dev
+  ```
+  For chromatica
+  ```
+  sudo apt install libclang-dev
+  sudo apt install python3-pip
+  sudo pip3 install --upgrade pynvim
+  ```
 
 * Open vim and download plugins (most are installed by downloading):
-```
-vim
-:PluginInstall
-```
+  ```
+  vim
+  :PluginInstall
+  ```
 
 * Install the compiled plugin components
-```
-cd ~/.vim/bundle/YouCompleteMe
-python3 install.py --clang-completer
-```
+  ```
+  cd ~/.vim/bundle/YouCompleteMe
+  python3 install.py --clang-completer
+  ```
 
 * When you open vim, it will prompt you to update remote python plugins and it will tell you what vim command to run to that end. Do that.
 
