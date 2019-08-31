@@ -152,7 +152,8 @@ vim main.cpp
 
 You should see features like semantic highlighting and context help.
 
-Please, test context help it by typing `std::cout.` inside main function and then hitting ctrl+space. You should see hints appear.
+Please, test context help it by typing `std::cout.` inside main function and then hitting ctrl+space. You should see hints appear, like this:
+![](images/screenshot_context_help.png)
 
 Note: 
 open vim from the root of your project.
