@@ -100,7 +100,7 @@ needs to have a **compile_commands.json** file created by your build system at t
 
 ## A "Hello World" project to test the setup
 
-You can test your setup with the following Hello World project. Just copy the 3 following files into a single folder, build it with `bash build.sh` and open `vim main.cpp`.
+You can test your setup with the following Hello World project. Just copy the 3 following files into a single folder and build it.
 
 *build.sh*
 ```
@@ -128,7 +128,31 @@ project (hello)
 add_executable(hello main.cpp)
 ```
 
-You should have compile_commands.json file appear in the root of your project, and features like semantic highlighting (e.g. members with different color than globals) and context help (such as actual class members proposed when hitting ctrl+space after typing a dot).
+Build it with:
+```
+bash build.sh
+```
+
+You should have compile_commands.json link appear in the root of your project.
+
+You can run the hello application like this:
+```
+build/hello
+```
+It should output
+```
+Hello World!
+```
+
+Now you can enjoy the features of this vim setup.
+Run
+```
+vim main.cpp
+```
+
+You should see features like semantic highlighting and context help.
+
+Please, test context help it by typing `std::cout.` inside main function and then hitting ctrl+space. You should see hints appear.
 
 Note: 
 open vim from the root of your project.
