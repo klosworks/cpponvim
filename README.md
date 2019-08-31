@@ -13,17 +13,18 @@ NeoVim can be installed using apt-get on Ubuntu so don't worry about the install
 
 ## Installation
 
-* install c++ tools
+* Checkout this repository and copy the init.vim file from it to your filesystem:
   ```
-  sudo install build-essential gdb 
-  ```
-
-* copy the init.vim file to your filesystem:
-  ```
+  git clone https://github.com/klosworks/cpponvim.git
   mkdir ~/.config
   mkdir ~/.config/nvim
   mkdir ~/.config/nvim/init.vim
   cp .config/nvim/init.vim ~/.config/nvim/
+  ```
+
+* install c++ tools
+  ```
+  sudo install build-essential gdb 
   ```
 
 * Install nvim:
