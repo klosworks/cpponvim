@@ -88,6 +88,8 @@ NeoVim can be installed using apt-get on Ubuntu so don't worry about the install
   vim
   :UpdateRemotePlugins
   ```
+  This is needed for Chromatica.vim which provides semantic highlighting (such as coloring depending on whether a variable is a class member or a local variable). This should not be confused with syntax highlighting (such as coloring a keyword or a comment differently than a variable name), which is already supported by vim and doesn't need a plugin.
+  
 
 * That's it! you should have a working nvim setup for C++!
 
@@ -139,4 +141,8 @@ This will ensure that the current working directory in vim is the root of your p
 ## More advance use of the plugins
 
 * Look online at NERDTree plugin documentation for some basic navigation within a project directory tree. 
-* Read ~/.config/nvim/init.nvim file. You will find that it is pretty well documented inside. Please try various commands defined using the nnoremap and inoremap commands. Hint: the <leader> key is defined as ',' (the comma).
+* Read ~/.config/nvim/init.nvim file. You will find that it is pretty well documented inside. Please try various commands defined using the nnoremap and inoremap commands. 
+Hints:
+  * Some contents are folded. To unfold, place your cursor on a folded line and type `zo`. To fold back, type `zc`.
+  * the `<leader>` key is defined as ',' (the comma).
+  * Chromatica sometimes has issues, particularly with headers. If you don't like the highliting by Chromatica and would like a more consistent but less powerful highlighting, do `:ChromaticaStop`. This will revert to the default vim highlighting for C++.
