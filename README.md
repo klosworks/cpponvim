@@ -1,9 +1,8 @@
 # cpponvim
 
-This is an attempt at providing a working, versioned, well documented configuration for programming in C++ on Ubuntu using NeoVim.
+This is an attempt at providing a working, versioned, well documented configuration for programming in C++ on Ubuntu using NeoVim (a vim clone).
 
-NeoVim is basically the Vim editor rewritten for more speed and plugin potential. If you are a Vim user, you will be able to use it without any learning step. If you are not a vim user, then any tutorial for Vim will apply to NeoVim.
-NeoVim can be installed using apt-get on Ubuntu so don't worry about the installation.
+NeoVim is basically the Vim editor rewritten for more speed, responsiveness and plugin potential. If you are a Vim user, you will be able to use it without any learning step. If you are a new vim user, any general tutorial for Vim will apply to NeoVim. Only a tiny minority of plugins will be different on NeoVim. You can assume that any Vim plugin works on NeoVim until proven otherwise.
 
 ## Environment
 
@@ -13,6 +12,12 @@ NeoVim can be installed using apt-get on Ubuntu so don't worry about the install
 
 ## Installation
 
+* Install nvim:
+  ```
+  sudo apt install nvim
+  ```
+  This installs version 0.2.2 at the time of writing this.
+  
 * Checkout this repository and copy the init.vim file from it to your filesystem:
   ```
   git clone https://github.com/klosworks/cpponvim.git
@@ -24,14 +29,8 @@ NeoVim can be installed using apt-get on Ubuntu so don't worry about the install
 
 * install c++ tools
   ```
-  sudo install build-essential gdb 
+  sudo install build-essential gdb cmake
   ```
-
-* Install nvim:
-  ```
-  sudo apt install nvim
-  ```
-  This installs version 0.2.2 at the time of writing this.
 
 * Set your vim command to neovim:
   ```
