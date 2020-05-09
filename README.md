@@ -163,6 +163,110 @@ vim src/package1/module3/ddd.cpp
 ```
 This will ensure that the current working directory in vim is the root of your project, compile_commands.json is found and plugins work correctly.
 
+## Better Chromatica setup
+
+Chromatica relies on libclang 6 by default, which causes issues, particularly with some C++ headers.
+Example:
+![](images/chromatica_clang6_issue.png)
+
+If you have no such issues, skip this section. Maybe Chromatica has been updated and works OK.
+
+### Disabling Chromatica (not recommended)
+If you don't like the highliting by Chromatica and would like a more consistent but less powerful highlighting, do `:ChromaticaStop`. This will revert to the default vim highlighting for C++.
+
+### Configuring Chromatica for libclang 9 (recommended)
+
+The default setup works with libclang 6.
+This can be changed to libclang 9 with a little bit more of a manual setup.
+Caveat: the same essential compile flags will be used for highlighting all c++ files, which may not be suitable for some projects, but will be OK for most new projects.
+Caveat: you will have to manually update a file with flags whenever you add an include directory, change C++ standard and probably in other cases. This is very quick but will need to be done sometimes.
+
+First, install libclang 9
+```
+sudo apt install libclang-9-dev
+```
+
+Now there are 2 possibilities:
+1. You have installed libclang but no clang
+2. You have installed libclang and clang
+
+If the option 2 is correct, you *must* make sure that standalone clang version matches that of libclang.
+You have just installed libclang 9 so you must also install clang-9
+```
+sudo apt install clang-9
+```
+Now make sure that `clang` is pointing to clang-9
+```
+clang --version
+```
+If the above command returned an older version number, do
+```
+sudo ln -s `which clang-9` /usr/bin/clang
+```
+
+Now, Chromatica still uses libclang 6. To make the switch, you need 2 things:
+* enable libclang 9 in NVim configuration
+* make `.chromatica` file for your project
+
+#### Modify init.nvim
+Edit ~/.config/nvim/init.nvim
+```
+vim ~/.config/nvim/init.nvim
+```
+Go to the chromatica section and unfold it by typing `zo` in normal mode.
+Replace this line
+```
+let g:chromatica#libclang_path='/usr/lib/llvm-6.0/lib/libclang.so'
+```
+with
+```
+let g:chromatica#libclang_path='/usr/lib/llvm-9/lib/libclang.so' 
+```
+
+#### Make the .chromatica file 
+
+```
+touch .chromatica
+```
+
+Then you need to put there the flags from compile_commands.json as well as one option.
+
+First, in the .chromatica file, put the option that will indicate to always treat files as c++, otherwise libclang will keep crashing:
+```
+echo "flags=--driver-mode=g++" >> .chromatica
+```
+
+Then, put the flags there. They can be found in compile_commands.json (after a project is compiled in CMake, see example section above) between `/usr/bin/c++` and `-o` or `-c` option. You only need flags from one translation unit.
+
+An example compile_commands.json
+```
+[
+{
+  "directory": "/home/pklos/projects/cp2/build",
+  "command": "/usr/bin/c++   -I/home/pklos/projects/cp2/src -I/home/pklos/projects/cp2/build  -O3 -DNDEBUG   -std=gnu++1z -o CMakeFiles/lexer.dir/src/lexer_runner.cpp.o -c /home/pklos/projects/cp2/src/lexer_runner.cpp",
+  "file": "/home/pklos/projects/cp2/src/lexer_runner.cpp"
+},
+...
+]
+```
+The flags are `-I/home/pklos/projects/cp2/src -I/home/pklos/projects/cp2/build  -O3 -DNDEBUG   -std=gnu++1z`.
+
+Then copy the flags in the format `flags=<flag>`
+
+An example resulting .chromatica file can be 
+```
+flags=--driver-mode=g++
+flags=-I/home/pklos/projects/cp2/src
+flags=-I/home/pklos/projects/cp2/build
+flags=-O3
+flags=-DNDEBUG
+flags=-std=c++1z
+```
+
+In the end, you will have correct highlighting
+
+![](images/chromatica_clang9.png)
+
 ## More advance use of the plugins
 
 * Look online at NERDTree plugin documentation for some basic navigation within a project directory tree. 
@@ -170,4 +274,4 @@ This will ensure that the current working directory in vim is the root of your p
 Hints:
   * Some contents are folded. To unfold, place your cursor on a folded line and type `zo`. To fold back, type `zc`.
   * the `<leader>` key is defined as ',' (the comma).
-  * Chromatica sometimes has issues, particularly with headers. If you don't like the highliting by Chromatica and would like a more consistent but less powerful highlighting, do `:ChromaticaStop`. This will revert to the default vim highlighting for C++.
+  
