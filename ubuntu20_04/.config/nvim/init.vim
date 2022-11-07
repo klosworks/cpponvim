@@ -121,6 +121,11 @@ inoremap <leader>wl <esc>:winc l<cr>
 
 set noswapfile
 
+" Lets <leader>* cause selecting all the matches of the current word, but
+" without the usual jumping to the next match, or moving the screen in any
+" way.
+nnoremap <silent> <leader>* :let @/= '\<' . expand('<cword>') . '\>' <bar> set hls <cr>
+
 " }}}
 
 " ----------------------- vim-airline options {{{
